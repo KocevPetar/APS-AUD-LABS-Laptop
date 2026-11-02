@@ -364,49 +364,109 @@ public class ChatGpt_zad{
 
     public  void main (String[] args){
 
-        Scanner input = new Scanner(System.in);
-        SLL<Integer> lista = new SLL<Integer>();
 
-        int m = input.nextInt();
-        for(int i = 0; i < m;i++){
-            lista.insertLast(input.nextInt());
-        }
-        System.out.println("Prvicno zadadenata lista");
-        System.out.println(lista.toString());
+        //TODO prva zadaca od ChatGPt
 
-        int x = 100;
+    //        Scanner input = new Scanner(System.in);
+    //        SLL<Integer> lista = new SLL<Integer>();
+    //
+    //        int m = input.nextInt();
+    //        for(int i = 0; i < m;i++){
+    //            lista.insertLast(input.nextInt());
+    //        }
+    //        System.out.println("Prvicno zadadenata lista");
+    //        System.out.println(lista.toString());
+    //
+    //        int x = 100;
+    //
+    //        lista.insertFirst(x);
+    //        lista.insertLast(x);
+    //        System.out.println("Posle dodavanje na pocetokot i krajot na listata");
+    //        System.out.println(lista.toString());
+    //
+    //        SLLNode<Integer>temp = lista.getFirst();
+    //        for(int i = 0; i < m ;i++){
+    //            if(temp.element == 5){
+    //                lista.insertBefore(x,temp);
+    //                break;
+    //            }
+    //            temp = temp.succ;
+    //        }
+    //
+    //        System.out.println("Dodavanje na X pred prvoto pojavuvanj na 5 ");
+    //        System.out.println(lista.toString());
+    //
+    //        SLLNode<Integer> lastFive = null;
+    //
+    //        while(temp!=null){
+    //            if(temp.element == 5){
+    //                lastFive = temp;
+    //            }
+    //            temp = temp.succ;
+    //        }
+    //
+    //        if(lastFive != null){
+    //            lista.insertAfter(x,lastFive);
+    //        }
+    //        System.out.println("Dodavanje na X posle poslednoto pojavuvanje na 5 ");
+    //        System.out.println(lista.toString());
 
-        lista.insertFirst(x);
-        lista.insertLast(x);
-        System.out.println("Posle dodavanje na pocetokot i krajot na listata");
-        System.out.println(lista.toString());
 
-        SLLNode<Integer>temp = lista.getFirst();
-        for(int i = 0; i < m ;i++){
-            if(temp.element == 5){
-                lista.insertBefore(x,temp);
-                break;
-            }
-            temp = temp.succ;
-        }
+        //TODO Vtora zadaca od ChatGpt
 
-        System.out.println("Dodavanje na X pred prvoto pojavuvanj na 5 ");
-        System.out.println(lista.toString());
+//        Scanner sc = new Scanner(System.in);
+//
+//        SLL<Integer> lista = new SLL<Integer>();
+//
+//        int N = sc.nextInt();
+//
+//        for(int i = 0; i < N;i++){
+//            lista.insertLast(sc.nextInt());
+//        }
+//
+//        SLLNode<Integer>tmp = lista.getFirst();
+//        for(int i = 0; i < N; i++){
+//            if(tmp.element == 5) {
+//                lista.delete(tmp);
+//            }
+//            tmp = tmp.succ;
+//        }
+//        System.out.println("Listat posle brisenje na site Nodes so element 5");
+//        System.out.println(lista.toString());
 
-        SLLNode<Integer> lastFive = null;
 
-        while(temp!=null){
-            if(temp.element == 5){
-                lastFive = temp;
-            }
-            temp = temp.succ;
-        }
+        //TODO treta zadaca od ChatGpt
 
-        if(lastFive != null){
-            lista.insertAfter(x,lastFive);
-        }
-        System.out.println("Dodavanje na X posle poslednoto pojavuvanje na 5 ");
-        System.out.println(lista.toString());
+//        Scanner sc = new Scanner(System.in);
+//        SLL<Integer> lista = new SLL<Integer>();
+//
+//                int N = sc.nextInt();
+//
+//                for(int i  =0 ; i < N; i++){
+//                    lista.insertLast(sc.nextInt());
+//                }
+//
+//
+//                int x = sc.nextInt();
+//                int y = sc.nextInt();
+//                SLLNode<Integer> tmp = lista.getFirst();
+//                boolean found = false;
+//
+//                for(int i = 0; i < N;i++) {
+//                    if(tmp.element == x ) {
+//                        found = true;
+//                        lista.insertAfter(y, tmp);
+//                        break;
+//                    }
+//                    tmp = tmp.succ;
+//                }
+//
+//                if(!found){
+//                    lista.insertLast(y);
+//                }
+//
+//                System.out.println(lista.toString());
+
 
     }
 }
