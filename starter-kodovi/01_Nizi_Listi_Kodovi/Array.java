@@ -1,4 +1,4 @@
-@SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
 public class Array<E> {
     private E data[]; // declared to be an Object since it would be too
     // complicated with generics

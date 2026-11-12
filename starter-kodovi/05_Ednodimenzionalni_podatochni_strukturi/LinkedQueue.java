@@ -61,4 +61,20 @@ public class LinkedQueue<E> implements Queue<E> {
             throw new NoSuchElementException();
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        SLLNode<E> current = front;
+        while (current != null) {
+            sb.append(current.element);
+            if (current.succ != null) {
+                sb.append(", ");
+            }
+            current = current.succ;
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
 }
