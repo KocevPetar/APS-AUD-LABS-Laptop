@@ -1,6 +1,6 @@
 import java.util.NoSuchElementException;
 
-public class LinkedQueue<E> implements Queue<E> {
+public static class LinkedQueue<E> implements Queue<E> {
 
 	// Redicata e pretstavena na sledniot nacin:
     // length go sodrzi brojot na elementi.

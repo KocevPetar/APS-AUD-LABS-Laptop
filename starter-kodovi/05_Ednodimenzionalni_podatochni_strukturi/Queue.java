@@ -1,4 +1,4 @@
-public interface Queue<E> {
+public static interface Queue<E> {
     // Elementi na redicata se objekti od proizvolen tip.
     // Metodi za pristap:
     public boolean isEmpty();

@@ -1,8 +1,8 @@
-package Ednodimenzionalni_podatoci;
+//package Ednodimenzionalni_podatoci;
 import java.util.Scanner;
 import java.util.NoSuchElementException;
-public  class zadaca {
-    public interface Queue<E> {
+public class zad3  {
+    public static interface Queue<E> {
         // Elementi na redicata se objekti od proizvolen tip.
         // Metodi za pristap:
         public boolean isEmpty();
@@ -25,7 +25,6 @@ public  class zadaca {
         public E dequeue();
         // Go otstranuva i vrakja pochetniot element na redicata.
     }
-
     public static class SLLNode<E> {
         protected E element;
         protected SLLNode<E> succ;
@@ -35,10 +34,6 @@ public  class zadaca {
             this.succ = succ;
         }
     }
-
-
-
-
     public static class LinkedQueue<E> implements Queue<E> {
 
         // Redicata e pretstavena na sledniot nacin:
@@ -118,41 +113,76 @@ public  class zadaca {
 
     }
 
-    public static void main (String[] args){
+    public static class Student{
+        String name;
+        int n;
+        int nf;
+        int ist;
 
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int T = sc.nextInt();
+        Student(String name, int n, int nf, int ist) {
+            this.name = name;
+            this.n = n;
+            this.nf = nf;
+            this.ist = ist;
 
-        LinkedQueue<String> names = new LinkedQueue<String>();
-        LinkedQueue<Integer> times = new LinkedQueue<Integer>();
-
-        for(int i = 0; i < N; i++){
-            String name = sc.next();
-            int time = sc.nextInt();
-
-
-            names.enqueue(name);
-            times.enqueue(time);
         }
+    }
+    public static void main (String[] args){
+        Scanner sc = new Scanner(System.in, "UTF-8");
+        int n = Integer.parseInt(sc.nextLine().trim());
 
-        int counter = 1;
+        Queue<Student> NaukaRedica = new LinkedQueue<Student>();
+        Queue<Student> NaucnaFantastikaRedica = new LinkedQueue<Student>();
+        Queue<Student> IstorijaRedica = new LinkedQueue<Student>();
 
-        while(!names.isEmpty()){
-            String ime = names.dequeue();
-            int vreme = times.dequeue();
-            if(vreme <= T){
-                System.out.println(counter + ". " + ime);
-                counter++;
-            }else{
-                    vreme -= T;
-                names.enqueue(ime);
-                times.enqueue(vreme);
+        for (int i = 0; i < n; i++) {
+            String ime = sc.nextLine().trim();
+            int nauka = Integer.parseInt(sc.nextLine().trim());
+            int naucnaF = Integer.parseInt(sc.nextLine().trim());
+            int istorija = Integer.parseInt(sc.nextLine().trim());
+
+            Student s = new Student(ime, nauka, naucnaF, istorija);
+
+            if (s.n == 1) {
+                NaukaRedica.enqueue(s);
+            } else if (s.nf == 1) {
+                NaucnaFantastikaRedica.enqueue(s);
+            } else if (s.ist == 1) {
+                IstorijaRedica.enqueue(s);
+            } else {
+                System.out.println(s.name);
             }
         }
 
+        while (!NaukaRedica.isEmpty() || !NaucnaFantastikaRedica.isEmpty() || !IstorijaRedica.isEmpty()) {
 
 
+            for (int i = 0; i < 2 && !NaukaRedica.isEmpty(); i++) {
+                Student s = NaukaRedica.dequeue();
+                if (s.nf == 1) {
+                    NaucnaFantastikaRedica.enqueue(s);
+                } else if (s.ist == 1) {
+                    IstorijaRedica.enqueue(s);
+                } else {
+                    System.out.println(s.name);
+                }
+            }
 
+            for (int i = 0; i < 1 && !NaucnaFantastikaRedica.isEmpty(); i++) {
+                Student s = NaucnaFantastikaRedica.dequeue();
+                if (s.ist == 1) {
+                    IstorijaRedica.enqueue(s);
+                } else {
+                    System.out.println(s.name);
+                }
+            }
+
+            for (int i = 0; i < 2 && !IstorijaRedica.isEmpty(); i++) {
+                Student s = IstorijaRedica.dequeue();
+                System.out.println(s.name);
+            }
+        }
+
+        sc.close();
     }
 }

@@ -1,4 +1,4 @@
-//package Ednodimenzionalni_podatoci;
+package Ednodimenzionalni_podatoci;
 import java.util.Scanner;
 import java.util.NoSuchElementException;
 public class zadacaa2 {
@@ -115,74 +115,73 @@ public class zadacaa2 {
         }
     }
 
-    static class Student {
-        public String ime;
-        public int nauka;
-        public int fantastika;
-        public int istorija;
+    static class Student{
+        String name;
+        int Nauka;
+        int NaucnaFantastika;
+        int Istorija;
+
+        Student(String name, int Nauka, int NaucnaFantastika, int Istorija){
+            this.name = name;
+            this. Nauka = Nauka;
+            this.NaucnaFantastika = NaucnaFantastika;
+            this.Istorija = Istorija;
+        }
+
+    }
 
 
-        Student(String ime, int nauka, int fantastika, int istorija) {
-            this.ime = ime;
-            this.nauka = nauka;
-            this.fantastika = fantastika;
-            this.istorija = istorija;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        Queue<Student> NaukaRedica = new LinkedQueue<Student>();
+        Queue<Student> NaucnaFredica = new LinkedQueue<Student>();
+        Queue<Student> IstorijaRedica = new LinkedQueue<Student>();
+
+        for (int i = 0; i < n; i++) {
+            String name = sc.nextLine();
+            int Nauka = sc.nextInt();
+            int NaucnaF = sc.nextInt();
+            int Istorija = sc.nextInt();
+            sc.nextLine();
+            Student s = new Student(name, Nauka, NaucnaF, Istorija);
+            if (s.Nauka == 1) {
+                NaukaRedica.enqueue(s);
+            } else if (s.NaucnaFantastika == 1) {
+                NaucnaFredica.enqueue(s);
+            } else if (s.Istorija == 1) {
+                IstorijaRedica.enqueue(s);
+            } else {
+                System.out.println(s.name);
+            }
+        }
+
+        while (!NaukaRedica.isEmpty()) {
+            Student s = NaukaRedica.dequeue();
+            if (s.NaucnaFantastika == 0 && s.Istorija == 0) {
+                System.out.println(s.name);
+            } else if (s.NaucnaFantastika == 1) {
+                NaucnaFredica.enqueue(s);
+            } else {
+                IstorijaRedica.enqueue(s);
+            }
+        }
+
+        while (!NaucnaFredica.isEmpty()) {
+            Student s = NaucnaFredica.dequeue();
+            if (s.Istorija == 0) {
+                System.out.println(s.name);
+            } else {
+                IstorijaRedica.enqueue(s);
+            }
+        }
+
+        while (!IstorijaRedica.isEmpty()) {
+            Student s = IstorijaRedica.dequeue();
+            System.out.println(s.name);
         }
     }
-
-
-            public static void main(String[] args) {
-                Scanner input = new Scanner(System.in);
-                int n = input.nextInt();
-                LinkedQueue<Student> listNauka = new LinkedQueue<Student>();
-                LinkedQueue<Student> listFantastika = new LinkedQueue<Student>();
-                LinkedQueue<Student> listIstorija = new LinkedQueue<Student>();
-                input.nextLine();
-
-                for (int i = 0; i < n; i++) {
-                    String name = input.nextLine();
-                    int na = input.nextInt();
-                    int f = input.nextInt();
-                    int is = input.nextInt();
-                    input.nextLine(); //
-                    Student s = new Student(name, na, f, is);
-                    if (s.nauka == 1) {
-                        listNauka.enqueue(s);
-                    } else if (s.fantastika == 1) {
-                        listFantastika.enqueue(s);
-                    } else if (s.istorija == 1) {
-                        listIstorija.enqueue(s);
-                    } else {
-                        System.out.println(name);
-                    }
-                }
-
-
-                while (!listNauka.isEmpty()) {
-                    Student s = listNauka.dequeue();
-                    if (s.fantastika == 0 && s.istorija == 0) {
-                        System.out.println(s.ime);
-                    } else if (s.fantastika == 1) {
-                        listFantastika.enqueue(s);
-                    } else {
-                        listIstorija.enqueue(s);
-                    }
-
-                }
-
-                while (!listFantastika.isEmpty()) {
-                    Student s = listFantastika.dequeue();
-                    if (s.istorija == 0) {
-                        System.out.println(s.ime);
-                    } else {
-                        listIstorija.enqueue(s);
-                    }
-                }
-
-                while (!listIstorija.isEmpty()) {
-                    Student s = listIstorija.dequeue();
-                    System.out.println(s.ime);
-                }
-            }
-    }
+}
 
